@@ -17,6 +17,8 @@ services:
     volumes:
       - static:/backend_static
       - media:/app/media
+    depends_on:
+      - db
   frontend:
     image: k05tya/kittygram_frontend
     command: cp -r /app/build/. /static/
@@ -29,3 +31,6 @@ services:
     volumes:
       - static:/static
       - media:/media
+    depends_on:
+      - backend
+      - frontend
